@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NOVA Tree</title>
+<meta name="description" content="Tableau de bord de votre équipe MWR Life">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#4338ca">
+<meta name="apple-mobile-web-app-title" content="NOVA Tree">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!--STYLE-->
+<style>
+.banner.ok{background:var(--ok-soft);color:var(--ink)}
+.banner.info{background:var(--info-soft);color:var(--ink)}
+.welcome{max-width:640px;margin:24px auto;padding:28px}
+.welcome h2{margin:0 0 8px}
+.welcome ol{padding-left:20px;line-height:1.7}
+.welcome li{margin-bottom:10px}
+.welcome .btn{margin-left:6px}
+.ico{display:inline-block}
+.top a.btn{text-decoration:none}
+dialog .steps{padding-left:20px;line-height:1.6}
+dialog .steps li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="date" id="date"></div>
+  <h1 id="hello">NOVA Tree</h1>
+  <div class="top">
+    <button class="btn" id="themeBtn" title="Changer de thème">◐ Thème</button>
+    <a class="btn" href="installer.html">Installer</a>
+    <span class="upd"><span class="stamp" id="stamp"></span><button class="btn primary" id="refreshBtn"><span class="ic">↻</span> Mettre à jour</button></span>
+  </div>
+  <div id="banner" hidden></div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="dash" aria-selected="true">Tableau de bord</button>
+    <button class="tab" role="tab" data-tab="tree" aria-selected="false">Arbre binaire</button>
+    <button class="tab" role="tab" data-tab="team" aria-selected="false">Équipe</button>
+  </div>
+  <section id="dash"></section>
+  <section id="tree" hidden></section>
+  <section id="team" hidden></section>
+</div>
+
+<dialog id="upd">
+  <h2>Mettre à jour les données</h2>
+  <ol class="steps">
+    <li>Touchez <b>Ouvrir MWR</b> ci-dessous. Si MWR vous le demande, connectez-vous avec vos identifiants MWR, sur le site officiel (cochez « Rester connecté »).</li>
+    <li>Sur la page MWR, <span id="updHint"></span>.</li>
+    <li>Après une dizaine de secondes, vous revenez ici avec les données à jour.</li>
+  </ol>
+  <div class="note">Vos identifiants ne sont saisis que sur mwrlife.com. NOVA Tree ne les voit jamais. Pas encore de lanceur ? <a href="installer.html">Installation</a></div>
+  <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;flex-wrap:wrap">
+    <button class="btn" id="updClose">Annuler</button>
+    <button class="btn primary" id="updGo">Ouvrir MWR</button>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

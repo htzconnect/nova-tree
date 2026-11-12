@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Installer NOVA Tree</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#4338ca">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--bg:#f6f6f4;--card:#fff;--ink:#16161a;--muted:#6b6b76;--line:#e7e7ea;--soft:#f3f3f5;--accent:#4338ca;--accent-soft:#e0e7ff;--ok:#15803d;--ok-soft:#dcfce7;--warn:#b45309;--warn-soft:#fef3c7;--btn:#16161a;--btn-ink:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111114;--card:#1a1a1f;--ink:#f2f2f4;--muted:#9a9aa6;--line:#2b2b32;--soft:#222228;--accent:#818cf8;--accent-soft:#272a4a;--ok:#4ade80;--ok-soft:#14321f;--warn:#fbbf24;--warn-soft:#3a2c0e;--btn:#f2f2f4;--btn-ink:#111114;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111114;--card:#1a1a1f;--ink:#f2f2f4;--muted:#9a9aa6;--line:#2b2b32;--soft:#222228;--accent:#818cf8;--accent-soft:#272a4a;--ok:#4ade80;--ok-soft:#14321f;--warn:#fbbf24;--warn-soft:#3a2c0e;--btn:#f2f2f4;--btn-ink:#111114;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:28px 20px 60px}
+a{color:var(--accent)}
+h1{font-size:30px;letter-spacing:-.02em;margin:8px 0 6px}
+.lead{color:var(--muted);margin:0 0 22px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 16px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:14px}
+.card h2{font-size:19px;margin:0 0 4px}
+.card h3{font-size:16px;margin:18px 0 6px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+ol{padding-left:22px;margin:8px 0}
+li{margin-bottom:10px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;border-radius:10px;font:inherit;font-weight:650;font-size:15px;cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.btn.copied{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.bm{display:inline-block;background:var(--accent);color:#fff;padding:10px 18px;border-radius:10px;font-weight:750;text-decoration:none;cursor:grab}
+.pill{display:inline-block;font-size:12px;font-weight:750;padding:2px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent);vertical-align:2px;margin-left:6px}
+.note{font-size:14px;color:var(--muted)}
+.warn{background:var(--warn-soft);border-radius:12px;padding:12px 14px;font-size:14px;margin-top:12px}
+code,pre{font:13px/1.45 ui-monospace,Menlo,monospace}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px;white-space:pre-wrap;word-break:break-all;margin:8px 0}
+kbd{font:600 13px ui-monospace,Menlo,monospace;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+details{margin-top:6px}
+summary{cursor:pointer;font-weight:650}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="./" class="note">← Retour à NOVA Tree</a>
+  <h1>Installer NOVA Tree</h1>
+  <p class="lead">Deux étapes, une seule fois : <b>1.</b> ajouter l'application à votre écran d'accueil, <b>2.</b> installer le <b>lanceur</b>, qui lit votre réseau sur MWR et met l'application à jour.</p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" data-os="ios">iPhone / iPad</button>
+    <button class="tab" data-os="android">Android</button>
+    <button class="tab" data-os="desktop">Ordinateur</button>
+  </div>
+
+  <!-- ============ iPhone ============ -->
+  <section data-panel="ios">
+    <div class="card">
+      <h2>1. L'application sur l'écran d'accueil</h2>
+      <ol>
+        <li>Ouvrez <b id="appUrl1"></b> dans <b>Safari</b>.</li>
+        <li>Touchez <b>Partager</b> (le carré avec la flèche), puis <b>Sur l'écran d'accueil</b>, puis <b>Ajouter</b>.</li>
+      </ol>
+      <p class="note">L'icône NOVA Tree ouvre l'application dans Safari : c'est voulu, pour qu'elle retrouve les données envoyées par le lanceur.</p>
+    </div>
+
+    <div class="card" id="iosShortcut">
+      <h2>2. Le lanceur : raccourci iPhone <span class="pill">recommandé</span></h2>
+      <p class="sub">Le plus simple : un toucher pour l'installer, puis il apparaît dans le menu Partager de Safari.</p>
+      <div id="scReady">
+        <ol>
+          <li><a class="btn primary" id="scLink" href="#">Ajouter le raccourci « NOVA Tree »</a> puis touchez <b>Ajouter le raccourci</b>.</li>
+          <li>Une seule fois, autorisez les scripts : <b>Réglages → Apps → Raccourcis → Avancé →</b> activez <b>Autoriser l'exécution de scripts</b>.</li>
+        </ol>
+        <h3>Utilisation</h3>
+        <p>Dans NOVA Tree, touchez <b>Mettre à jour</b> → sur la page MWR, touchez <b>Partager</b> → <b>NOVA Tree</b>. Au premier usage, iOS demande l'autorisation pour mwrlife.com : choisissez <b>Toujours autoriser</b>.</p>
+      </div>
+      <div id="scMissing" class="warn">Le lien du raccourci n'est pas encore disponible. En attendant, utilisez le favori ci-dessous, ou demandez le lien à votre responsable d'équipe.</div>
+    </div>
+
+    <div class="card">
+      <h2>2 bis. Le lanceur : favori Safari</h2>
+      <p class="sub">Alternative sans l'app Raccourcis.</p>
+      <ol>
+        <li><button class="btn" data-copy="bm">⧉ Copier le code du lanceur</button></li>
+        <li>Toujours sur cette page, touchez <b>Partager → Ajouter un signet → Enregistrer</b>.</li>
+        <li>Ouvrez les <b>Signets</b> (l'icône livre), touchez <b>Modifier</b>, puis le signet que vous venez de créer.</li>
+        <li>Renommez-le <b>NOVA Tree</b>, effacez l'adresse et <b>collez</b> le code copié. Touchez <b>OK</b>.</li>
+      </ol>
+      <h3>Utilisation</h3>
+      <p>Sur la page MWR, ouvrez les <b>Signets</b> et touchez <b>NOVA Tree</b>.</p>
+    </div>
+  </section>
+
+  <!-- ============ Android ============ -->
+  <section data-panel="android" hidden>
+    <div class="card">
+      <h2>1. L'application sur l'écran d'accueil</h2>
+      <ol>
+        <li>Ouvrez <b id="appUrl2"></b> dans <b>Chrome</b>.</li>
+        <li>Touchez le menu <b>⋮</b>, puis <b>Ajouter à l'écran d'accueil</b>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>2. Le lanceur : favori Chrome</h2>
+      <ol>
+        <li><button class="btn" data-copy="bm">⧉ Copier le code du lanceur</button></li>
+        <li>Sur cette page, touchez <b>⋮</b> puis l'étoile <b>☆</b> pour l'ajouter aux favoris.</li>
+        <li>Touchez <b>Modifier</b> (ou ⋮ → Favoris → crayon) : nommez-le <b>NOVA Tree</b> et remplacez l'adresse par le code copié.</li>
+      </ol>
+      <h3>Utilisation</h3>
+      <p>Sur la page MWR, tapez <kbd>NOVA Tree</kbd> dans la barre d'adresse et touchez la suggestion <b>NOVA Tree</b> marquée d'une étoile.</p>
+    </div>
+  </section>
+
+  <!-- ============ Ordinateur ============ -->
+  <section data-panel="desktop" hidden>
+    <div class="card">
+      <h2>1. Le lanceur : favori</h2>
+      <p class="sub">Fonctionne avec Chrome, Safari, Edge, Firefox, Brave, Arc…</p>
+      <ol>
+        <li>Affichez la barre de favoris (<kbd>⌘ ⇧ B</kbd> sur Mac, <kbd>Ctrl ⇧ B</kbd> sur PC ; dans Safari : Présentation → Afficher la barre des favoris).</li>
+        <li>Glissez ce bouton dans la barre : <a class="bm" id="bmLink" href="#">NOVA Tree</a></li>
+      </ol>
+      <h3>Utilisation</h3>
+      <p>Dans NOVA Tree, cliquez <b>Mettre à jour</b>, puis sur la page MWR, cliquez le favori <b>NOVA Tree</b>.</p>
+      <details><summary>Le glisser-déposer ne marche pas ?</summary>
+        <p>Créez un favori quelconque, modifiez-le, nommez-le <b>NOVA Tree</b> et collez ce code comme adresse : <button class="btn" data-copy="bm">⧉ Copier le code</button></p>
+      </details>
+    </div>
+    <div class="card">
+      <h2>Utilisateurs de Chrome</h2>
+      <p>L'extension NOVA Tree pour Chrome se met à jour toute seule, sans passer par MWR. Demandez-la à votre responsable d'équipe.</p>
+    </div>
+  </section>
+
+  <!-- ============ Création du raccourci (administrateur) ============ -->
+  <div class="card">
+    <details id="admin">
+      <summary>Responsable d'équipe : créer le raccourci iPhone (une seule fois)</summary>
+      <ol>
+        <li>Sur l'iPhone, ouvrez l'app <b>Raccourcis</b> et touchez <b>+</b>.</li>
+        <li>Ajoutez l'action <b>Exécuter JavaScript sur une page web</b> (en anglais : <i>Run JavaScript on Web Page</i>).</li>
+        <li>Remplacez tout le code de l'action par celui-ci : <button class="btn" data-copy="sc">⧉ Copier</button><pre id="scCode"></pre></li>
+        <li>Touchez le <b>nom du raccourci</b> en haut, renommez-le <b>NOVA Tree</b>, puis <b>ⓘ</b> → activez <b>Afficher dans la feuille de partage</b> et ne gardez que <b>Pages web Safari</b> comme type d'entrée.</li>
+        <li>Dans la liste des raccourcis, maintenez <b>NOVA Tree</b> → <b>Partager</b> → <b>Copier le lien iCloud</b>, et envoyez ce lien à la personne qui gère NOVA Tree : il sera affiché ici pour toute l'équipe.</li>
+      </ol>
+    </details>
+  </div>
+</div>
+
+<script>
+// Lien iCloud du raccourci iPhone (à renseigner une fois le raccourci partagé).
+const SHORTCUT_URL = '';
+
+const APP = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
+const loader = APP + 'collect.js';
+const bmCode = "javascript:(function(){window.__NOVA_APP='" + APP + "';var s=document.createElement('script');s.src='" + loader + "?v='+Date.now();document.body.appendChild(s);})();";
+const scCode = "window.__NOVA_APP='" + APP + "';\nvar s=document.createElement('script');\ns.src='" + loader + "?v='+Date.now();\ndocument.body.appendChild(s);\ncompletion(true);";
+
+document.getElementById('appUrl1').textContent = APP;
+document.getElementById('appUrl2').textContent = APP;
+document.getElementById('bmLink').href = bmCode;
+document.getElementById('bmLink').addEventListener('click', e => { e.preventDefault(); alert('Glissez ce bouton dans votre barre de favoris, puis utilisez-le sur une page mwrlife.com.'); });
+document.getElementById('scCode').textContent = scCode;
+if (SHORTCUT_URL) document.getElementById('scLink').href = SHORTCUT_URL; else { document.getElementById('scReady').hidden = true; }
+document.getElementById('scMissing').hidden = !!SHORTCUT_URL;
+
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+  const txt = b.dataset.copy === 'sc' ? scCode : bmCode, label = b.innerHTML;
+  let ok = false;
+  try { await navigator.clipboard.writeText(txt); ok = true; } catch (e) {
+    const ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch (e2) {} ta.remove();
+  }
+  b.innerHTML = ok ? '✓ Copié' : 'Copie impossible'; b.classList.toggle('copied', ok);
+  setTimeout(() => { b.innerHTML = label; b.classList.remove('copied'); }, 1800);
+}));
+
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const os = isIOS ? 'ios' : /Android/i.test(navigator.userAgent) ? 'android' : 'desktop';
+const show = o => {
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.os === o));
+  document.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== o; });
+};
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => show(t.dataset.os)));
+show(os);
+try { const th = localStorage.getItem('mwr-theme'); if (th) document.documentElement.dataset.theme = th; } catch (e) {}
+</script>
+</body>
+</html>
