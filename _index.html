@@ -12,14 +12,10 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <!--STYLE-->
-<style>/* --- Logotype NOVA Tree (version claire / sombre selon le thème) --- */
-.brand{display:block;margin:0 0 16px;line-height:0}
-.brand img{height:58px;width:auto;display:block}
-.brand .bd{display:none}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand .bl{display:none}:root:not([data-theme="light"]) .brand .bd{display:block}}
-:root[data-theme="dark"] .brand .bl{display:none}
-:root[data-theme="dark"] .brand .bd{display:block}
-@media (max-width:620px){.brand img{height:40px}}
+<style>/* --- Logo NOVA Tree : bandeau noir, identique dans les deux thèmes --- */
+.brand{display:inline-block;background:#000;border-radius:14px;padding:12px 22px;margin:0 0 18px;line-height:0;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.brand img{height:52px;width:auto;display:block}
+@media (max-width:620px){.brand{padding:10px 16px}.brand img{height:36px}}
 </style>
 <style>
 .banner.ok{background:var(--ok-soft);color:var(--ink)}
@@ -37,7 +33,7 @@ dialog .steps li{margin-bottom:8px}
 </head>
 <body>
 <div class="wrap">
-  <div class="brand" role="img" aria-label="NOVA Tree"><img class="bl" src="wordmark-light.png" alt=""><img class="bd" src="wordmark-dark.png" alt=""></div>
+  <div class="brand"><img src="brand.png" alt="NOVA Tree"></div>
   <div class="date" id="date"></div>
   <h1 id="hello">NOVA Tree</h1>
   <div class="top">
