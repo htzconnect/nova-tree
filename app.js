@@ -74,7 +74,7 @@ function renderDash(m) {
   const first = titleCase((root.name || '').split(' ')[0]);
 
   $('#date').textContent = cap(ref.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }));
-  $('#hello').textContent = 'Bonjour ' + first + ', ton équipe a fait ' + (n7.length ? plural(n7.length, 'nouvelle inscription', 'nouvelles inscriptions') : 'aucune nouvelle inscription') + ' cette semaine';
+  $('#hello').textContent = 'Bonjour ' + first + ', ton équipe ' + (n7.length ? 'a fait ' + plural(n7.length, 'nouvelle inscription', 'nouvelles inscriptions') : 'n\'a fait aucune nouvelle inscription') + ' cette semaine';
   const cd = new Date(raw.collectedAt);
   $('#stamp').textContent = 'Données du ' + fmtD(cd) + ' à ' + pad(cd.getHours()) + 'h' + pad(cd.getMinutes());
 
