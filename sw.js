@@ -1,6 +1,6 @@
 // NOVA Tree — mise en cache de l'application pour un usage hors connexion.
 // Réseau d'abord (pour toujours avoir la dernière version), cache si pas de réseau.
-const CACHE = 'nova-tree-v1';
+const CACHE = 'nova-tree-v2';
 const SHELL = ['./', 'index.html', 'app.js', 'installer.html', 'manifest.webmanifest', 'icon-192.png', 'apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
